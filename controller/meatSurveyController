@@ -1,0 +1,119 @@
+const MeatSurvey = require('../DB/meatSurvey');
+
+const createMeatSurvey = async ( req, res) => {
+    console.log("Adding survey...")
+    try{
+        const meatSurvey = new MeatSurvey({
+           surveyNum: req.body.surveyNum,
+           week: req.body.week,
+           itemName: req.body.itemName,
+           salePrice: req.body.salePrice,         
+           firstDelivery: req.body.firstDelivery,
+           secondDelivery: req.body.secondDelivery,
+           thirdDelivery: req.body.thirdDelivery,
+           forthDelivery: req.body.forthDelivery,
+           fifthDelivery: req.body.fifthDelivery,
+           amountRecived: req.body.amountRecived,
+           amountRemaining: req.body.amountRemaining,
+           ranOut: req.body.ranOut
+       })
+       const savedMeatSurvey = await meatSurvey.save();
+       res.json(savedMeatSurvey);
+       }catch(err){
+         res.json({message:err});
+       }
+     };
+
+const getAll = async ( req, res) => {
+    console.log("Getting survey...")
+    try{
+      const allMeatSurveys = await MeatSurvey.find();
+      res.json(allMeatSurveys);
+    }catch(err){
+      res.json({message:err});
+    }
+  };
+
+const findById = async ( req, res) => {
+    console.log("Getting survey...")
+    try{
+      const surveyByID = await MeatSurvey.findById(req.params.id);
+      res.json(surveyByID);
+    }catch(err){
+      res.json({message:err});
+    }
+  };
+
+const findBySurveyNumber = async ( req, res) => {
+    console.log("Getting survey...")
+    try{
+      const bySurveyNumber = await MeatSurvey.find({surveyNum: { $regex: '.*' + req.params.surveyNum + '.*' }});
+      res.json(bySurveyNumber);
+    }catch(err){
+      res.json({message:err});
+    }
+  };
+const findByWeek = async ( req, res) => {
+    console.log("Getting survey...")
+    try{
+      const byWeek = await MeatSurvey.find({week: { $regex: '.*' + req.params.week + '.*' }});
+      res.json(byWeek);
+    }catch(err){
+      res.json({message:err});
+    }
+};
+const findByItemName = async ( req, res) => {
+    console.log("Getting survey...")
+    try{
+      const byItemName = await MeatSurvey.find({itemName: { $regex: '.*' + req.params.itemName + '.*' }});
+      res.json(byItemName);
+    }catch(err){
+      res.json({message:err});
+    }
+};
+
+const updateSurvey = async ( req, res) => {
+    console.log("Updateing survey...")
+    try{
+        const update = await MeatSurvey.updateOne({_id: req.params.id},
+            {$set:
+                {           
+                    surveyNum: req.body.surveyNum,           
+                    week: req.body.week,           
+                    itemName: req.body.itemName,           
+                    salePrice: req.body.salePrice,           
+                    firstDelivery: req.body.firstDelivery,           
+                    secondDelivery: req.body.secondDelivery,           
+                    thirdDelivery: req.body.thirdDelivery,           
+                    forthDelivery: req.body.forthDelivery,           
+                    fifthDelivery: req.body.fifthDelivery,           
+                    amountRecived: req.body.amountRecived,           
+                    amountRemaining: req.body.amountRemaining,           
+                    ranOut: req.body.ranOut
+                }
+            })
+       res.json(update);
+       }catch(err){
+         res.json({message:err});
+       }
+     };
+
+     const deleteSurvey = async ( req, res) => {
+        console.log("Deleting survey...")
+        try{
+          const deleteSurvey = await MeatSurvey.deleteOne({_id: req.params.id});
+          res.json(deleteSurvey);
+        }catch(err){
+          res.json({message:err});
+        }
+    };
+  module.exports = {
+      createMeatSurvey,
+      getAll,
+      findById,
+      findBySurveyNumber,
+      findByWeek,
+      findByItemName,
+      updateSurvey,
+      deleteSurvey
+  };

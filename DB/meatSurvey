@@ -1,0 +1,45 @@
+const mongoose = require('mongoose');
+
+const meatSurvey = new mongoose.Schema(
+    {
+        surveyNum:{
+            type:String
+        },
+        week:{
+            type:String
+        },
+        itemName:{
+            type:String
+        },
+        salePrice:{
+            type:Number
+        },        
+        firstDelivery:{
+            type:Number
+        },
+        secondDelivery:{
+            type:Number
+        },
+        thirdDelivery:{
+            type:Number
+        },
+        forthDelivery:{
+            type:Number
+        },
+        fifthDelivery:{
+            type:Number
+        },
+        amountRecived:{
+            type:Number
+        },
+        amountRemaining:{
+            type:Number
+        },
+        ranOut:{
+            type:String
+        }
+    },
+    {collection:'MeatDepartment'}
+);
+
+module.exports = mongoose.model('MeatSurvey', meatSurvey);

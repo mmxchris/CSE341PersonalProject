@@ -1,0 +1,23 @@
+###
+POST http://localhost:3000/meatDepartment
+Content-Type: application/json
+
+{
+    "surveyNum": "Test02",
+    "monthWeek": "May Week 2",
+    "itemName": "testMeatSurvey",
+    "salePrice": 1,
+    "firstDelivery": 1,
+    "secondDelivery": 2,
+    "thirdDelivery": 3,
+    "forthDelivery": 4,
+    "fifthDelivery": 5,
+    "amountRecived": 1,
+    "amountRemaining": 0,
+    "ranOut": "no"
+}
+###
+GET http://localhost:3000/meatDepartment
+
+###
+GET http://localhost:3000/produceDepartment

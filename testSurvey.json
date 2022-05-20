@@ -1,0 +1,14 @@
+{
+    "surveyNum":"Test03",
+    "week":"May Week 2",
+    "itemName":"test",
+    "salePrice":"1.00",
+    "firstDelivery": 1,
+    "secondDelivery": 2,
+    "thirdDelivery": 3,
+    "forthDelivery": 4,
+    "fifthDelivery": 5,
+    "amountRecived": 1,
+    "amountRemaining": 0,
+    "ranOut":"no"
+}

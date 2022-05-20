@@ -1,0 +1,464 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/meatDepartment/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "surveyNum": {
+                  "example": "any"
+                },
+                "week": {
+                  "example": "any"
+                },
+                "itemName": {
+                  "example": "any"
+                },
+                "salePrice": {
+                  "example": "any"
+                },
+                "firstDelivery": {
+                  "example": "any"
+                },
+                "secondDelivery": {
+                  "example": "any"
+                },
+                "thirdDelivery": {
+                  "example": "any"
+                },
+                "forthDelivery": {
+                  "example": "any"
+                },
+                "fifthDelivery": {
+                  "example": "any"
+                },
+                "amountRecived": {
+                  "example": "any"
+                },
+                "amountRemaining": {
+                  "example": "any"
+                },
+                "ranOut": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/meatDepartment/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/meatDepartment/surveyNum/{surveyNum}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "surveyNum",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/meatDepartment/week/{week}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "week",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/meatDepartment/itemName/{itemName}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "itemName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/meatDepartment/update/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "surveyNum": {
+                  "example": "any"
+                },
+                "week": {
+                  "example": "any"
+                },
+                "itemName": {
+                  "example": "any"
+                },
+                "salePrice": {
+                  "example": "any"
+                },
+                "firstDelivery": {
+                  "example": "any"
+                },
+                "secondDelivery": {
+                  "example": "any"
+                },
+                "thirdDelivery": {
+                  "example": "any"
+                },
+                "forthDelivery": {
+                  "example": "any"
+                },
+                "fifthDelivery": {
+                  "example": "any"
+                },
+                "amountRecived": {
+                  "example": "any"
+                },
+                "amountRemaining": {
+                  "example": "any"
+                },
+                "ranOut": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/meatDepartment/delete/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/produceDepartment/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "surveyNum": {
+                  "example": "any"
+                },
+                "week": {
+                  "example": "any"
+                },
+                "itemName": {
+                  "example": "any"
+                },
+                "salePrice": {
+                  "example": "any"
+                },
+                "firstDelivery": {
+                  "example": "any"
+                },
+                "secondDelivery": {
+                  "example": "any"
+                },
+                "thirdDelivery": {
+                  "example": "any"
+                },
+                "forthDelivery": {
+                  "example": "any"
+                },
+                "fifthDelivery": {
+                  "example": "any"
+                },
+                "amountRecived": {
+                  "example": "any"
+                },
+                "amountRemaining": {
+                  "example": "any"
+                },
+                "ranOut": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/produceDepartment/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/produceDepartment/surveyNum/{surveyNum}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "surveyNum",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/produceDepartment/week/{week}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "week",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/produceDepartment/itemName/{itemName}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "itemName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/produceDepartment/update/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "surveyNum": {
+                  "example": "any"
+                },
+                "week": {
+                  "example": "any"
+                },
+                "itemName": {
+                  "example": "any"
+                },
+                "salePrice": {
+                  "example": "any"
+                },
+                "firstDelivery": {
+                  "example": "any"
+                },
+                "secondDelivery": {
+                  "example": "any"
+                },
+                "thirdDelivery": {
+                  "example": "any"
+                },
+                "forthDelivery": {
+                  "example": "any"
+                },
+                "fifthDelivery": {
+                  "example": "any"
+                },
+                "amountRecived": {
+                  "example": "any"
+                },
+                "amountRemaining": {
+                  "example": "any"
+                },
+                "ranOut": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/produceDepartment/delete/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
