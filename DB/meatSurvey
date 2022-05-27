@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const meatSurvey = new mongoose.Schema(
+const survey = new mongoose.Schema(
     {
         surveyNum:{
             type:String
@@ -42,4 +42,4 @@ const meatSurvey = new mongoose.Schema(
     {collection:'MeatDepartment'}
 );
 
-module.exports = mongoose.model('MeatSurvey', meatSurvey);
+module.exports = mongoose.model('Survey', survey);

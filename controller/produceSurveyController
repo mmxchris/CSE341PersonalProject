@@ -1,4 +1,4 @@
-const ProduceSurvey = require('../DB/produceSurvey');
+/*const ProduceSurvey = require('../DB/produceSurvey');
 
 const createProduceSurvey = async ( req, res) => {
   console.log("Adding survey...")
@@ -116,4 +116,175 @@ const updateSurvey = async ( req, res) => {
     findByItemName,
     updateSurvey,
     deleteSurvey
+  };*/
+
+const mongoose = require('mongoose');
+const ProduceSurvey = require('../DB/produceSurvey');
+
+const createProduceSurvey = async ( req, res) => {
+  try{
+    console.log("Adding survey...")
+        const survey = new ProduceSurvey({
+           surveyNum: req.body.surveyNum,
+           week: req.body.week,
+           itemName: req.body.itemName,
+           salePrice: req.body.salePrice,         
+           firstDelivery: req.body.firstDelivery,
+           secondDelivery: req.body.secondDelivery,
+           thirdDelivery: req.body.thirdDelivery,
+           forthDelivery: req.body.forthDelivery,
+           fifthDelivery: req.body.fifthDelivery,
+           amountRecived: req.body.amountRecived,
+           amountRemaining: req.body.amountRemaining,
+           ranOut: req.body.ranOut
+       })
+       const savedSurvey = await survey.save();
+       if (savedSurvey.acknowledged) {
+         res.status(201).json(savedSurvey);
+       }
+       else {
+         res.status(500)
+       }
+      }catch(err){
+        res.json({message:err});
+      }
+     };
+
+const getAll = async ( req, res) => {
+    console.log("Getting survey...")
+    try{
+      const allSurveys = await ProduceSurvey.find();
+      res.json(allSurveys);
+    }catch(err){
+      res.json({message:err});
+    }
+  };
+
+const findById = async ( req, res) => {
+  try{
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must use a valid id to find a survey.');
+      }
+      else{
+         console.log("Getting survey...");
+         const surveyByID = await ProduceSurvey.findById(req.params.id);
+         console.log(surveyByID)
+         if (surveyByID === null){
+           res.status(400).json('Survey Not Found.');
+          }
+          else{
+            res.json(surveyByID);
+      }
+    }
+    }catch(err){
+    res.json({message:err});
+  }
+  }
+
+const findBySurveyNumber = async ( req, res) => {
+  try{  
+    console.log("Getting survey...")
+    const bySurveyNumber = await ProduceSurvey.find({surveyNum: { $regex: '.*[a-zA-Z0-9]*' + req.params.surveyNum +'.*' }});
+    if (Object.keys(bySurveyNumber).length === 0){
+      res.status(400).json('Survey Not Found.');
+    }else{
+     res.json(bySurveyNumber);
+    }
+  }catch(err){
+    res.json({message:err});
+  }  
+};
+
+const findByWeek = async ( req, res) => {
+  try{
+    console.log("Getting survey...")
+    const byWeek = await ProduceSurvey.find({week: { $regex: '.*[a-zA-Z0-9]*' + req.params.week + '.*' }});   
+    if (Object.keys(byWeek).length === 0){
+      res.status(400).json('Survey Not Found.');     
+    }else{
+      res.json(byWeek);
+    }
+  }catch(err){
+    res.json({message:err});
+  }
+};
+
+const findByItemName = async ( req, res) => {
+  try{
+    console.log("Getting survey...")
+    const byItemName = await ProduceSurvey.find({itemName: { $regex: '.*[a-zA-Z0-9]*' + req.params.itemName + '.*' }});   
+    if (Object.keys(byItemName).length === 0){
+      res.status(400).json('Survey Not Found.');     
+    }else{
+      res.json(byItemName);
+    }
+  }catch(err){
+    res.json({message:err});
+  }
+};
+
+
+const updateSurvey = async ( req, res) => {
+    console.log("Updateing survey...")
+    try{
+      if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to find a survey.');
+        }
+        else{
+            const update = await ProduceSurvey.updateOne({_id: req.params.id},
+            {$set:
+                {           
+                    surveyNum: req.body.surveyNum,           
+                    week: req.body.week,           
+                    itemName: req.body.itemName,           
+                    salePrice: req.body.salePrice,           
+                    firstDelivery: req.body.firstDelivery,           
+                    secondDelivery: req.body.secondDelivery,           
+                    thirdDelivery: req.body.thirdDelivery,           
+                    forthDelivery: req.body.forthDelivery,           
+                    fifthDelivery: req.body.fifthDelivery,           
+                    amountRecived: req.body.amountRecived,           
+                    amountRemaining: req.body.amountRemaining,           
+                    ranOut: req.body.ranOut
+                }
+            });
+            console.log("update: " + update.matchedCount);
+            if (update.matchedCount === 0){
+              res.status(400).json('Survey Not Found.');
+             }else{
+             res.json(update);
+          }
+          }
+       }catch(err){
+         res.json({message:err});
+       }
+     };
+
+     const deleteSurvey = async ( req, res) => {        
+        try{
+          if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            res.status(400).json('Must use a valid id to find a survey.');
+            }
+            else{              
+            console.log("Deleting survey...")
+          const deleteSurvey = await ProduceSurvey.deleteOne({_id: req.params.id});
+          if (deleteSurvey.deletedCount === 0){
+            res.status(400).json('Survey Not Found.');
+           }else{
+           res.json(deleteSurvey);
+        }
+            }
+        }catch(err){
+          res.json({message:err});
+        }
+    };
+  module.exports = {
+      createProduceSurvey,
+      getAll,
+      findById,
+      findBySurveyNumber,
+      findByWeek,
+      findByItemName,
+      updateSurvey,
+      deleteSurvey
   };

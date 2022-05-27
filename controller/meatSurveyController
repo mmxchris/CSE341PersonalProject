@@ -1,9 +1,10 @@
+const mongoose = require('mongoose');
 const MeatSurvey = require('../DB/meatSurvey');
 
 const createMeatSurvey = async ( req, res) => {
+  try{
     console.log("Adding survey...")
-    try{
-        const meatSurvey = new MeatSurvey({
+        const survey = new MeatSurvey({
            surveyNum: req.body.surveyNum,
            week: req.body.week,
            itemName: req.body.itemName,
@@ -17,65 +18,100 @@ const createMeatSurvey = async ( req, res) => {
            amountRemaining: req.body.amountRemaining,
            ranOut: req.body.ranOut
        })
-       const savedMeatSurvey = await meatSurvey.save();
-       res.json(savedMeatSurvey);
-       }catch(err){
-         res.json({message:err});
+       const savedSurvey = await survey.save();
+       if (savedSurvey.acknowledged) {
+         res.status(201).json(savedSurvey);
        }
+       else {
+         res.status(500)
+       }
+      }catch(err){
+        res.json({message:err});
+      }
      };
 
 const getAll = async ( req, res) => {
     console.log("Getting survey...")
     try{
-      const allMeatSurveys = await MeatSurvey.find();
-      res.json(allMeatSurveys);
+      const allSurveys = await MeatSurvey.find();
+      res.json(allSurveys);
     }catch(err){
       res.json({message:err});
     }
   };
 
 const findById = async ( req, res) => {
-    console.log("Getting survey...")
-    try{
-      const surveyByID = await MeatSurvey.findById(req.params.id);
-      res.json(surveyByID);
-    }catch(err){
-      res.json({message:err});
+  try{
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must use a valid id to find a survey.');
+      }
+      else{
+         console.log("Getting survey...");
+         const surveyByID = await MeatSurvey.findById(req.params.id);
+         console.log(surveyByID)
+         if (surveyByID === null){
+           res.status(400).json('Survey Not Found.');
+          }
+          else{
+            res.json(surveyByID);
+      }
     }
-  };
+    }catch(err){
+    res.json({message:err});
+  }
+  }
 
 const findBySurveyNumber = async ( req, res) => {
+  try{  
     console.log("Getting survey...")
-    try{
-      const bySurveyNumber = await MeatSurvey.find({surveyNum: { $regex: '.*' + req.params.surveyNum + '.*' }});
-      res.json(bySurveyNumber);
-    }catch(err){
-      res.json({message:err});
+    const bySurveyNumber = await MeatSurvey.find({surveyNum: { $regex: '.*[a-zA-Z0-9]*' + req.params.surveyNum +'.*' }});
+    if (Object.keys(bySurveyNumber).length === 0){
+      res.status(400).json('Survey Not Found.');
+    }else{
+     res.json(bySurveyNumber);
     }
-  };
+  }catch(err){
+    res.json({message:err});
+  }  
+};
+
 const findByWeek = async ( req, res) => {
+  try{
     console.log("Getting survey...")
-    try{
-      const byWeek = await MeatSurvey.find({week: { $regex: '.*' + req.params.week + '.*' }});
+    const byWeek = await MeatSurvey.find({week: { $regex: '.*[a-zA-Z0-9]*' + req.params.week + '.*' }});   
+    if (Object.keys(byWeek).length === 0){
+      res.status(400).json('Survey Not Found.');     
+    }else{
       res.json(byWeek);
-    }catch(err){
-      res.json({message:err});
     }
+  }catch(err){
+    res.json({message:err});
+  }
 };
+
 const findByItemName = async ( req, res) => {
+  try{
     console.log("Getting survey...")
-    try{
-      const byItemName = await MeatSurvey.find({itemName: { $regex: '.*' + req.params.itemName + '.*' }});
+    const byItemName = await MeatSurvey.find({itemName: { $regex: '.*[a-zA-Z0-9]*' + req.params.itemName + '.*' }});   
+    if (Object.keys(byItemName).length === 0){
+      res.status(400).json('Survey Not Found.');     
+    }else{
       res.json(byItemName);
-    }catch(err){
-      res.json({message:err});
     }
+  }catch(err){
+    res.json({message:err});
+  }
 };
+
 
 const updateSurvey = async ( req, res) => {
     console.log("Updateing survey...")
     try{
-        const update = await MeatSurvey.updateOne({_id: req.params.id},
+      if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to find a survey.');
+        }
+        else{
+            const update = await MeatSurvey.updateOne({_id: req.params.id},
             {$set:
                 {           
                     surveyNum: req.body.surveyNum,           
@@ -91,18 +127,33 @@ const updateSurvey = async ( req, res) => {
                     amountRemaining: req.body.amountRemaining,           
                     ranOut: req.body.ranOut
                 }
-            })
-       res.json(update);
+            });
+            console.log("update: " + update.matchedCount);
+            if (update.matchedCount === 0){
+              res.status(400).json('Survey Not Found.');
+             }else{
+             res.json(update);
+          }
+          }
        }catch(err){
          res.json({message:err});
        }
      };
 
-     const deleteSurvey = async ( req, res) => {
-        console.log("Deleting survey...")
+     const deleteSurvey = async ( req, res) => {        
         try{
+          if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            res.status(400).json('Must use a valid id to find a survey.');
+            }
+            else{              
+            console.log("Deleting survey...")
           const deleteSurvey = await MeatSurvey.deleteOne({_id: req.params.id});
-          res.json(deleteSurvey);
+          if (deleteSurvey.deletedCount === 0){
+            res.status(400).json('Survey Not Found.');
+           }else{
+           res.json(deleteSurvey);
+        }
+            }
         }catch(err){
           res.json({message:err});
         }
