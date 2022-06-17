@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 const MeatSurvey = require('../DB/meatSurvey');
 
 const createMeatSurvey = async ( req, res) => {
+  /*
+  #swagger.tags = ['Meat Department'] 
+  #swagger.security = [{
+    "JWT": []
+  }]
+  */
   try{
     console.log("Adding survey...")
         const survey = new MeatSurvey({
@@ -31,6 +37,12 @@ const createMeatSurvey = async ( req, res) => {
      };
 
 const getAll = async ( req, res) => {
+ /*
+  #swagger.tags = ['Meat Department'] 
+  #swagger.security = [{
+    "JWT": []
+  }]
+  */
     console.log("Getting survey...")
     try{
       const allSurveys = await MeatSurvey.find();
@@ -41,6 +53,12 @@ const getAll = async ( req, res) => {
   };
 
 const findById = async ( req, res) => {
+ /*
+  #swagger.tags = ['Meat Department'] 
+  #swagger.security = [{
+    "JWT": []
+  }]
+*/
   try{
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
       res.status(400).json('Must use a valid id to find a survey.');
@@ -62,6 +80,12 @@ const findById = async ( req, res) => {
   }
 
 const findBySurveyNumber = async ( req, res) => {
+  /*
+  #swagger.tags = ['Meat Department'] 
+  #swagger.security = [{
+    "JWT": []
+  }]
+  */
   try{  
     console.log("Getting survey...")
     const bySurveyNumber = await MeatSurvey.find({surveyNum: { $regex: '.*[a-zA-Z0-9]*' + req.params.surveyNum +'.*' }});
@@ -76,6 +100,12 @@ const findBySurveyNumber = async ( req, res) => {
 };
 
 const findByWeek = async ( req, res) => {
+  /*
+  #swagger.tags = ['Meat Department'] 
+  #swagger.security = [{
+    "JWT": []
+  }]
+  */
   try{
     console.log("Getting survey...")
     const byWeek = await MeatSurvey.find({week: { $regex: '.*[a-zA-Z0-9]*' + req.params.week + '.*' }});   
@@ -90,6 +120,12 @@ const findByWeek = async ( req, res) => {
 };
 
 const findByItemName = async ( req, res) => {
+  /*
+  #swagger.tags = ['Meat Department'] 
+  #swagger.security = [{
+    "JWT": []
+  }]
+  */
   try{
     console.log("Getting survey...")
     const byItemName = await MeatSurvey.find({itemName: { $regex: '.*[a-zA-Z0-9]*' + req.params.itemName + '.*' }});   
@@ -103,8 +139,13 @@ const findByItemName = async ( req, res) => {
   }
 };
 
-
 const updateSurvey = async ( req, res) => {
+  /*
+  #swagger.tags = ['Meat Department'] 
+  #swagger.security = [{
+    "JWT": []
+  }]
+  */
     console.log("Updateing survey...")
     try{
       if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -139,8 +180,14 @@ const updateSurvey = async ( req, res) => {
          res.json({message:err});
        }
      };
-
-     const deleteSurvey = async ( req, res) => {        
+     
+const deleteSurvey = async ( req, res) => {
+  /*
+  #swagger.tags = ['Meat Department'] 
+  #swagger.security = [{
+    "JWT": []
+  }]
+  */
         try{
           if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
             res.status(400).json('Must use a valid id to find a survey.');

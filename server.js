@@ -11,6 +11,17 @@ app.use('/', require('./routes'));
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
+const swaggerOption = {
+    swaggerDefiniation: {
+        info: {
+            title: 'CSE 341 Personal Project',
+            description: 'An API for tracking survey orders for meat deparment and produce department.',
+            contact:{
+                name: "Christopher Bowen"
+            }
+        }
+    }
+}
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => [

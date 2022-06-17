@@ -1,9 +1,11 @@
 const express = require('express');
 const { route } = require('./meatSurvey');
 const routes = require('express').Router();
+const verifyToken = require ('../helper/verfiyToken')
 
-routes.use('/meatDepartment', require('./meatSurvey'));
+routes.use('/meatDepartment', verifyToken.auth, require('./meatSurvey'));
 routes.use('/produceDepartment', require('./produceSurvey'));
+routes.use('/user', require('./user'));
 routes.get('/', (req, res) => {
     res.send('Home');
   });

@@ -5,7 +5,6 @@ const produceSurveyController = require('../controller/produceSurveyController')
 const validation = require('../middleware/validate');
 
 routes.post('/', validation.saveSurvey, produceSurveyController.createProduceSurvey)
-
 routes.get('/', produceSurveyController.getAll);
 routes.get('/:id',produceSurveyController.findById);
 routes.get('/surveyNum/:surveyNum', produceSurveyController.findBySurveyNumber);

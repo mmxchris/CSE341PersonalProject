@@ -21,3 +21,14 @@ GET http://localhost:3000/meatDepartment
 
 ###
 GET http://localhost:3000/produceDepartment
+###
+POST http://localhost:3000/user/register
+Content-Type: application/json
+
+{
+    "name": "another2",
+    "email": "another2@chris.com",
+    "password": "12345678"
+}
+###
+GET http://localhost:3000/user/register

@@ -1,15 +1,29 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.0",
-    "title": "REST API",
-    "description": ""
+    "title": "CSE 341 Personal Project",
+    "description": "An API for tracking survey orders for meat deparment and produce department.",
+    "contact": {
+      "name": "Christopher Bowen"
+    },
+    "host": "localhost:3000",
+    "schemes": [
+      "http"
+    ],
+    "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "http"
   ],
+  "securityDefinitions": {
+    "JWT": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "auth-token"
+    }
+  },
   "paths": {
     "/": {
       "get": {
@@ -24,6 +38,9 @@
     },
     "/meatDepartment/": {
       "post": {
+        "tags": [
+          "Meat Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -79,26 +96,54 @@
           "201": {
             "description": "Created"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "412": {
             "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "get": {
+        "tags": [
+          "Meat Department"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/meatDepartment/{id}": {
       "get": {
+        "tags": [
+          "Meat Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -114,12 +159,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/meatDepartment/surveyNum/{surveyNum}": {
       "get": {
+        "tags": [
+          "Meat Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -135,12 +191,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/meatDepartment/week/{week}": {
       "get": {
+        "tags": [
+          "Meat Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -156,12 +223,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/meatDepartment/itemName/{itemName}": {
       "get": {
+        "tags": [
+          "Meat Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -177,12 +255,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/meatDepartment/update/{id}": {
       "put": {
+        "tags": [
+          "Meat Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -244,14 +333,25 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "412": {
             "description": "Precondition Failed"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/meatDepartment/delete/{id}": {
       "delete": {
+        "tags": [
+          "Meat Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -267,12 +367,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/produceDepartment/": {
       "post": {
+        "tags": [
+          "Produce Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -328,26 +439,54 @@
           "201": {
             "description": "Created"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "412": {
             "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "get": {
+        "tags": [
+          "Produce Department"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/produceDepartment/{id}": {
       "get": {
+        "tags": [
+          "Produce Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -363,12 +502,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/produceDepartment/surveyNum/{surveyNum}": {
       "get": {
+        "tags": [
+          "Produce Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -384,12 +534,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/produceDepartment/week/{week}": {
       "get": {
+        "tags": [
+          "Produce Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -405,12 +566,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/produceDepartment/itemName/{itemName}": {
       "get": {
+        "tags": [
+          "Produce Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -426,12 +598,23 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/produceDepartment/update/{id}": {
       "put": {
+        "tags": [
+          "Produce Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -493,14 +676,25 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "412": {
             "description": "Precondition Failed"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/produceDepartment/delete/{id}": {
       "delete": {
+        "tags": [
+          "Produce Department"
+        ],
         "description": "",
         "parameters": [
           {
@@ -516,6 +710,115 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/user/register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Used to register a user",
+        "parameters": [
+          {
+            "name": "User",
+            "description": "Data that represents a user",
+            "in": "body",
+            "schema": {
+              "required": [
+                "User"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 255,
+                  "example": "Joe Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 255,
+                  "example": "Joe@Doe.com"
+                },
+                "password": {
+                  "type": "string",
+                  "required": "true",
+                  "minLength": 6,
+                  "maxLength": 1024,
+                  "example": "1234Abcd"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 User Created"
+          },
+          "400": {
+            "description": "400 Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "500 Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Used to login as a user",
+        "parameters": [
+          {
+            "name": "User",
+            "description": "Data that is needed to login a user",
+            "in": "body",
+            "schema": {
+              "required": [
+                "User"
+              ],
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 255,
+                  "example": "Joe@Doe.com"
+                },
+                "password": {
+                  "type": "string",
+                  "required": "true",
+                  "minLength": 6,
+                  "maxLength": 1024,
+                  "example": "1234Abcd"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 User login succeeded"
+          },
+          "400": {
+            "description": "400 Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
