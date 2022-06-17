@@ -5,10 +5,10 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "cse341-personalproject-cwbowen.herokuapp.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
