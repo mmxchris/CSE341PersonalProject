@@ -8,7 +8,6 @@ const createMeatSurvey = async ( req, res) => {
     "JWT": []
   }]
   */
-  try{
     console.log("Adding survey...")
         const survey = new MeatSurvey({
            surveyNum: req.body.surveyNum,
@@ -24,6 +23,7 @@ const createMeatSurvey = async ( req, res) => {
            amountRemaining: req.body.amountRemaining,
            ranOut: req.body.ranOut
        })
+       try{
        const savedSurvey = await survey.save();
        if (savedSurvey.acknowledged) {
          res.status(201).json(savedSurvey);
