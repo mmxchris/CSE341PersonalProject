@@ -18,10 +18,13 @@ const swaggerOption = {
             description: 'An API for tracking survey orders for meat deparment and produce department.',
             contact:{
                 name: "Christopher Bowen"
-            }
+            },
+            server: ["http://localhost:3000"]
         }
-    }
-}
+    },
+    apis: ['.routes/*.js']    
+};
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => [

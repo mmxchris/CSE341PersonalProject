@@ -6,9 +6,9 @@
     "contact": {
       "name": "Christopher Bowen"
     },
-    "host": "localhost:3000",
+    "host": "https://cse341-personalproject-cwbowen.herokuapp.com/",
     "schemes": [
-      "http"
+      "https"
     ],
     "version": "1.0.0"
   },
