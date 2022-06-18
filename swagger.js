@@ -7,7 +7,7 @@ const doc = {
     contact:{
         name: "Christopher Bowen"
     },
-  host: 'https://cse341-personalproject-cwbowen.herokuapp.com/',
+  host: 'cse341-personalproject-cwbowen.herokuapp.com/',
   schemes: ['https'],    
   },
   securityDefinitions: {  
