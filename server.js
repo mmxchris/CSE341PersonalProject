@@ -19,7 +19,7 @@ const swaggerOption = {
             contact:{
                 name: "Christopher Bowen"
             },
-            server: ["http://localhost:3000"]
+            server: ["https://cse341-personalproject-cwbowen.herokuapp.com/"]
         }
     },
     apis: ['.routes/*.js']    
