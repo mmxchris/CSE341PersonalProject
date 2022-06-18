@@ -26,7 +26,7 @@ const createMeatSurvey = async ( req, res) => {
        try{
        const savedSurvey = await survey.save();
        
-         res.status(201).json(savedSurvey);
+         res.send(savedSurvey);
          console.log("survey saved");
       }catch(err){
         res.status(500).send(err);
